@@ -1,4 +1,5 @@
 <?php
+/*Author: Mayandi*/
 class USER
 {
     private $db;
