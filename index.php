@@ -1,5 +1,5 @@
 <?php
-
+/*Author : Mayandi*/
 require_once 'config/dbconfig.php';
 
 if($user->is_loggedin()!="")
