@@ -8,6 +8,8 @@ class USER
     {
       $this->db = $DB_con;
     }
+
+
  
     public function register($fname,$lname,$uname,$umail,$upass)
     {
@@ -30,7 +32,47 @@ class USER
            echo $e->getMessage();
        }    
     }
- 
+	
+	public function updateAccountData($umail,$mobile){
+		
+		 try
+		{
+			 $session_id=$_SESSION['user_session'];
+			 $stmt = $this->db->prepare("update users SET user_email=:umail,mobile_no=:mobile where user_id=:session_id");
+			 $stmt->bindparam(":umail", $umail);
+			 $stmt->bindparam(":mobile", $mobile);
+			 $stmt->bindparam(":session_id", $session_id);
+			 $stmt->execute(); 
+			 return $stmt; 
+		}
+		catch(PDOException $e)
+       {
+           echo $e->getMessage();
+       }
+                                                 
+
+	}
+	public function getAccountData(){
+		
+		try
+		{
+			$session_id=$_SESSION['user_session'];
+
+			$stmt = $this->db->prepare("SELECT user_email,mobile_no FROM users WHERE user_id=:session_id LIMIT 1");
+			$stmt->execute(array(':session_id'=>$session_id));
+			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+			if($stmt->rowCount() > 0)
+			{
+				return $userRow;
+			}
+		}
+	   catch(PDOException $e)
+       {
+           echo $e->getMessage();
+       }
+
+
+	}
     public function login($uname,$umail,$upass)
     {
        try
