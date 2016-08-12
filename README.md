@@ -1,5 +1,5 @@
 # MyCode 
-It is the sample website. Only developed for Demo.
+Only developed for Demo.
 PDO implemtation
 OOPS implementation
 Proper structured Code
