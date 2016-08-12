@@ -18,7 +18,7 @@
 	
 /* Author: Mayandi 
 *Date Created: Feb-07-2016
-*home.php
+*aboutUs.php
 */
 	
 	$title_bar="About Us";
